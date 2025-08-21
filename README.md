@@ -92,15 +92,10 @@ dataset:
 
 ### 3. Start Training
 
-```bash
-# Single GPU training
-python train_dino.py --train_config_file configs/dino/rgb_training_config.yaml
-
-# Multi-GPU distributed training
+```bash 
+# Multi-GPU and multi-node distributed training
 torchrun --nnodes 1 --nproc-per-node 2 train_dino.py --train_config_file configs/dino/rgb_training_config.yaml
-
-# Multi-node training
-torchrun --nnodes 2 --nproc-per-node 4 --master_addr="192.168.1.1" --master_port=29500 train_dino.py --train_config_file configs/dino/rgb_training_config.yaml
+ 
 ```
 
 ## Configuration Reference
@@ -173,7 +168,7 @@ dino_head:
   loss_weight: 1.0            # DINO loss weight
 
 ibot:
-  loss_weight: 0.0            # iBOT loss weight (0 to disable)
+  loss_weight: 1.0            # iBOT loss weight (0 to disable)
   out_dim: 65536              # iBOT output dimension
   mask_sample_probability: 0.5 # Probability of masking
   mask_ratio_min_max: [0.1, 0.5]  # Mask ratio range

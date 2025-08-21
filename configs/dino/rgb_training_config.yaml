@@ -3,7 +3,7 @@ dino_head:
   norm_last_layer: False
   loss_weight: 1.0
 ibot:
-  loss_weight: 0.0
+  loss_weight: 1.0
   out_dim: 65536 # 131072 sometimes good for dinov2, testing is necessary
   norm_last_layer: False
   mask_sample_probability: 0.5
@@ -16,7 +16,7 @@ distribution:
   downcast_bf16: 'no'
 train:
   model_name: 'test_dinov2'
-  model_type: 'facebook/dinov2-base'
+  model_type: 'facebook/dinov2-with-registers-base'
   global_batch_size: 64
   max_iterations: 60000   
   gradient_checkpointing_enable: false 
